@@ -1,4 +1,4 @@
-import { UserEventDto } from './dtos/user-events.dto';
+import { UserEventDto } from './dtos/user-event.dto';
 import { Body, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma, UserEvent } from '@prisma/client';

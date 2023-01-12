@@ -1,4 +1,4 @@
-import { UserEventDto } from './dtos/user-events.dto';
+import { UserEventDto } from './dtos/user-event.dto';
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { UserEventService } from './user-event.service';
 
