@@ -1,8 +1,8 @@
 import { Test } from '@nestjs/testing';
 import { UserEvent } from '@prisma/client';
-import { PrismaService } from './../prisma/prisma.service';
-import { UserEventController } from './user-event.controller';
-import { UserEventService } from './user-event.service';
+import { PrismaService } from '../prisma/prisma.service';
+import { EventController } from './event.controller';
+import { EventService } from './event.service';
 
 const result: UserEvent[] = [
   {
@@ -15,17 +15,17 @@ const result: UserEvent[] = [
 ];
 
 describe('UserEventController', () => {
-  let userEventController: UserEventController;
-  let userEventService: UserEventService;
+  let userEventController: EventController;
+  let userEventService: EventService;
+
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
-      controllers: [UserEventController],
-      providers: [UserEventService, PrismaService],
+      controllers: [EventController],
+      providers: [EventService, PrismaService],
     }).compile();
 
-    userEventService = moduleRef.get<UserEventService>(UserEventService);
-    userEventController =
-      moduleRef.get<UserEventController>(UserEventController);
+    userEventService = moduleRef.get<EventService>(EventService);
+    userEventController = moduleRef.get<EventController>(EventController);
   });
 
   describe('getEvents', () => {
@@ -41,7 +41,7 @@ describe('UserEventController', () => {
     it('should return an array of user events', async () => {
       jest.spyOn(userEventService, 'addEvent');
 
-      const getEventsResult = await userEventController.addEvent({
+      const getEventsResult = await userEventService.addEvent({
         name: '321',
         surname: 'Any',
         email: 'jhodnnygmail.com',
