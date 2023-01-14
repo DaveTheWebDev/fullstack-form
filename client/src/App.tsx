@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import type { } from '@mui/x-date-pickers/themeAugmentation';
+import { UserEventFormProvider } from './components/context/UserEventForm';
 
 const darkTheme = createTheme({
   palette: {
@@ -26,11 +27,11 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-
         <CssBaseline />
-
         <div className="App">
-          <UserEventForm />
+          <UserEventFormProvider>
+            <UserEventForm />
+          </UserEventFormProvider>
         </div>
       </LocalizationProvider>
 
