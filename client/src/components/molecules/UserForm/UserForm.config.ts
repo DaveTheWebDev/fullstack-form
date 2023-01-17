@@ -8,10 +8,30 @@ export interface IUser {
 	email: string;
 }
 
+export const SCHEMA_DICTIONARY = {
+	NAME: {
+		MAX_LENGTH: "Name can not be longer than 32 characters",
+		REQUIRED: "Name can not be empty",
+	},
+	SURNAME: {
+		MAX_LENGTH: "Surname can not be longer than 32 characters",
+		REQUIRED: "Surname can not be empty",
+	},
+	EMAIL: {
+		CORRECT: "Email should be in correct format",
+		REQUIRED: "Email can not be empty",
+		MAX_LENGTH: "Email can not be longer than 48 characters",
+	},
+};
+
 const schema = yup.object().shape({
-	name: yup.string().max(32, "Name can not be longer than 32 characters").required("Name can not be empty"),
-	surname: yup.string().max(32, "Surname can not be longer than 32 characters").required("Surname can not be empty"),
-	email: yup.string().email("Email should be in correct format").max(32).required("Email can not be empty"),
+	name: yup.string().max(32, SCHEMA_DICTIONARY.NAME.MAX_LENGTH).required(SCHEMA_DICTIONARY.NAME.REQUIRED),
+	surname: yup.string().max(32, SCHEMA_DICTIONARY.SURNAME.MAX_LENGTH).required(SCHEMA_DICTIONARY.SURNAME.REQUIRED),
+	email: yup
+		.string()
+		.email(SCHEMA_DICTIONARY.EMAIL.CORRECT)
+		.max(48, SCHEMA_DICTIONARY.EMAIL.MAX_LENGTH)
+		.required(SCHEMA_DICTIONARY.EMAIL.REQUIRED),
 });
 
 const defaultValues: IUser = {

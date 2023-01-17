@@ -6,8 +6,14 @@ export interface IEvent {
 	eventDate: Date;
 }
 
+export const SCHEMA_DICTIONARY = {
+	DATE: {
+		REQUIRED: "Date can not be empty",
+	},
+};
+
 const schema = yup.object().shape({
-	eventDate: yup.date().required("Date can not be empty"),
+	eventDate: yup.date().required(SCHEMA_DICTIONARY.DATE.REQUIRED),
 });
 
 const defaultValues: IEvent = {
