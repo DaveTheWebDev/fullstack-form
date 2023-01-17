@@ -1,4 +1,4 @@
-import { InputProps, InputMock } from "../atoms/Input/Input.types";
+import { InputProps, InputMock } from "../../atoms/Input/Input.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { UserEventFormProps } from "./UserEventForm.types";
-import { useUserEventForm } from '../context/UserEventForm';
-import { UserForm } from '../UserForm/UserForm';
-import { EventForm } from '../EventForm/EventForm';
+import { useUserEventForm } from '../../context/UserEventFormCtx';
+import { UserForm } from '../../molecues/UserForm/UserForm';
+import { EventForm } from '../../molecues/EventForm/EventForm';
 
 export const UserEventForm = ({ }: UserEventFormProps) => {
   const { stateType } = useUserEventForm()
