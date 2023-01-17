@@ -5,6 +5,7 @@ import { EventDto } from 'api/EventApi/EventApi.dto';
 import { LocalStorage } from 'services/LocalStorage';
 import { useFetch } from 'hooks/useFetch';
 import { eventFormConfig } from './EventForm.config';
+import { useUserEventForm } from 'components/context/UserEventFormCtx';
 
 const sortByDate = (a: EventDto, b: EventDto) => new Date(a.date).getTime() - new Date(b.date).getTime()
 
@@ -13,6 +14,7 @@ export const useEventForm = () => {
   const [events, setEvents] = useState<EventDto[]>([])
   const [dateError, setDateError] = useState<FieldError | null>(null)
   const { initFetch, fetchStatus } = useFetch()
+  const { setCreateUserState } = useUserEventForm()
 
   const onSubmit: SubmitHandler<FieldValues> = async (event) => {
     const email = LocalStorage.get('email')
@@ -25,6 +27,11 @@ export const useEventForm = () => {
 
   const createEvent = () => {
     handleSubmit(onSubmit)()
+  }
+
+  const createAnotherUser = () => {
+    LocalStorage.set('email', "")
+    setCreateUserState()
   }
 
   const getEvents = async () => {
@@ -47,6 +54,7 @@ export const useEventForm = () => {
     setError: setDateError,
     dateError,
     control,
-    errors
+    errors,
+    createAnotherUser
   }
 }

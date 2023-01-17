@@ -7,7 +7,7 @@ import { useEventForm } from './EventForm.hooks';
 
 
 export const EventForm = () => {
-  const { control, createEvent, errors, events, fetchStatus, setError, dateError } = useEventForm()
+  const { control, createEvent, errors, events, fetchStatus, setError, dateError, createAnotherUser } = useEventForm()
   const { label, name, required, type } = dateInput
   const isSubmitting = fetchStatus.type === 'LOADING'
 
@@ -32,6 +32,11 @@ export const EventForm = () => {
           style={{ marginTop: '15px' }}
           onClick={createEvent}
           variant='contained' >Add event</Button>
+        <Button
+          disabled={isSubmitting}
+          style={{ marginTop: '15px' }}
+          onClick={createAnotherUser}
+          variant='outlined' >Create another user</Button>
       </FormControl>
       <Grid loading={isSubmitting} events={events} />
     </>
