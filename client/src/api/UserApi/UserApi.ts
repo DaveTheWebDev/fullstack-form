@@ -1,12 +1,18 @@
 import { Api } from "../Api";
+import { UserBodyDto, UserDto } from "./UserApi.dto";
 
-class EventApi extends Api {
+class UserApi extends Api {
 	constructor(protected baseUrl: string) {
 		super(baseUrl);
 	}
-	getEvents = () => {
-		return this.get("/all");
+	getUser = async (email: string) => {
+		return await this.get<UserDto>(`/${email}`);
+	};
+
+	create = async (body: UserBodyDto) => {
+		const stringifiedBody = JSON.stringify(body);
+		return await this.post<UserDto>("/create", stringifiedBody);
 	};
 }
 
-export const eventApi = new EventApi("localhost:5000/event");
+export const userApi = new UserApi("http://localhost:5000/user");

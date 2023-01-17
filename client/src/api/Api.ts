@@ -1,3 +1,5 @@
+import { UserError } from "./../utils/errorHandling.types";
+import { ErrorValidator } from "./../utils/errorHandling";
 export interface IFetchResponse<T> {
 	status: {
 		code: number;
@@ -17,21 +19,25 @@ export class Api {
 			},
 		};
 	}
-	public async get<T>(path: string, config?: RequestInit): Promise<T> {
-		return fetch(this.baseUrl + path, { ...this.config, method: "GET", ...config })
-			.then((response): Promise<IFetchResponse<T>> => response.json())
-			.then((data) => data.response)
-			.catch((err) => {
-				return Promise.reject(err);
-			});
+	protected async get<T>(path: string, config?: RequestInit): Promise<T> {
+		try {
+			const rawResponse = await fetch(this.baseUrl + path, { ...this.config, method: "GET", ...config });
+			const response = await rawResponse.json();
+			if (ErrorValidator.isApiError(response)) throw response;
+			return response as T;
+		} catch (error) {
+			throw error;
+		}
 	}
 
-	public async post<T>(path: string, body: BodyInit, config?: RequestInit): Promise<T> {
-		return fetch(this.baseUrl + path, { ...this.config, method: "POST", body, ...config })
-			.then((response): Promise<IFetchResponse<T>> => response.json())
-			.then((data) => data.response)
-			.catch((err) => {
-				return Promise.reject(err);
-			});
+	protected async post<T>(path: string, body: BodyInit, config?: RequestInit): Promise<T> {
+		try {
+			const rawResponse = await fetch(this.baseUrl + path, { ...this.config, method: "POST", body, ...config });
+			const response = await rawResponse.json();
+			if (ErrorValidator.isApiError(response)) throw response;
+			return response as T;
+		} catch (error) {
+			throw error;
+		}
 	}
 }
