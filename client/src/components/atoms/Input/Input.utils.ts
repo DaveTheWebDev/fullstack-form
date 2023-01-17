@@ -1,8 +1,7 @@
-import { IUser } from "./../../molecues/UserForm/UserForm.config";
+import { IUser } from "./../../molecules/UserForm/UserForm.config";
 import { InputProps } from "./Input.types";
-import { DateValidationError } from "@mui/x-date-pickers/internals";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
-import { IEvent } from "../../molecues/EventForm/EventForm.config";
+import { IEvent } from "../../molecules/EventForm/EventForm.config";
 import { isValid } from "date-fns";
 
 const DATE_PICKER_ERRORS = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { eventFormConfig } from './EventForm.config';
 import { useForm, SubmitHandler, FieldValues, FieldError } from 'react-hook-form';
 import { eventApi } from '../../../api/EventApi/EventApi';
