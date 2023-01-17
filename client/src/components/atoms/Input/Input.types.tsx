@@ -1,11 +1,10 @@
-import { FieldErrorsImpl, FieldValues, Control, UseFormSetError } from 'react-hook-form';
-import { IUser } from '../../UserForm/UserForm.config';
-import { IEvent } from '../../EventForm/EventForm.config';
-
+import { FieldErrorsImpl, FieldValues, Control, FieldError } from 'react-hook-form';
+import { Dispatch, SetStateAction } from "react";
 export interface InputProps extends InputMock {
   errors: Partial<FieldErrorsImpl<FieldValues>>
   control: Control<FieldValues, unknown>
-  setError: UseFormSetError<FieldValues>
+  setError?: Dispatch<SetStateAction<FieldError | null>>
+  disabled: boolean
 }
 
 export interface InputMock {
