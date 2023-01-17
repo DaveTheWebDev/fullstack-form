@@ -1,8 +1,8 @@
-import { IUser } from "./../../molecules/UserForm/UserForm.config";
-import { InputProps } from "./Input.types";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
-import { IEvent } from "../../molecules/EventForm/EventForm.config";
 import { isValid } from "date-fns";
+import { IUser } from "components/molecules/UserForm/UserForm.config";
+import { IEvent } from "components/molecules/EventForm/EventForm.config";
+import { InputProps } from "./Input.types";
 
 const DATE_PICKER_ERRORS = {
 	INVALID_DATE: "Please fill out with correct date eg. 15-01-2023",
@@ -33,7 +33,6 @@ export const validateDate = (date: Date | null, errorSetter: InputProps["setErro
 	const chosenDate = date.getTime();
 	const isChosenPast = todayTime > chosenDate;
 	const isChosenFarFuture = chosenDate > todayAfterTenYears.getTime();
-	console.log(chosenDate, todayAfterTenYears.getTime());
 	if (isChosenPast) {
 		errorSetter({ type: "minDate", message: DATE_PICKER_ERRORS.MIN_DATE });
 		return date;
