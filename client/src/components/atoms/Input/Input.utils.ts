@@ -4,8 +4,8 @@ import { IUser } from "components/molecules/UserForm/UserForm.config";
 import { IEvent } from "components/molecules/EventForm/EventForm.config";
 import { InputProps } from "./Input.types";
 
-const DATE_PICKER_ERRORS = {
-	INVALID_DATE: "Please fill out with correct date eg. 15-01-2023",
+export const DATE_PICKER_ERRORS = {
+	INVALID_DATE: "Please fill out with correct date eg. 28.01.2023",
 	MIN_DATE: "Date can not be chosen before today date",
 	MAX_DATE: "Date can not be chosen after ten years from today",
 };
