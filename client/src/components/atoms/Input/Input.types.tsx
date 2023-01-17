@@ -1,5 +1,6 @@
-import { FieldErrorsImpl, FieldValues, Control, FieldError } from 'react-hook-form';
 import { Dispatch, SetStateAction } from "react";
+import { FieldErrorsImpl, FieldValues, Control, FieldError } from 'react-hook-form';
+
 export interface InputProps extends InputMock {
   errors: Partial<FieldErrorsImpl<FieldValues>>
   control: Control<FieldValues, unknown>

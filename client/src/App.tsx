@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { UserEventForm } from './components/organisms/UserEventForm/UserEventForm';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { LocalizationProvider } from '@mui/x-date-pickers';

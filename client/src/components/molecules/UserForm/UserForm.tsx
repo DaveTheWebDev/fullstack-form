@@ -1,16 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button, FormControl } from '@mui/material';
-import { Input } from '../../atoms/Input/Input';
-import { inputs, IUser, userFormConfig } from './UserForm.config';
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import { useUserEventForm } from '../../context/UserEventFormCtx';
-import { LocalStorage } from '../../../services/LocalStorage';
-import { userApi } from '../../../api/UserApi/UserApi';
-import { useFetch } from '../../../hooks/useFetch';
-import { UserBodyDto } from '../../../api/UserApi/UserApi.dto';
+import { inputs } from './UserForm.config';
 import { useUserForm } from './UserForm.hooks';
-import { Spinner } from '../../atoms/Spinner/Spinner';
-
+import { Input } from 'components/atoms/Input/Input';
+import { Spinner } from 'components/atoms/Spinner/Spinner';
 
 export const UserForm = () => {
   const { control, createUser, errors, fetchStatus } = useUserForm()

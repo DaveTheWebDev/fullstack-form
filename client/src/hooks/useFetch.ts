@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { UserError } from "../utils/errorHandling.types";
-import { ErrorValidator } from "../utils/errorHandling";
+import { useState, useCallback } from "react";
+import { UserError } from "utils/errorHandling.types";
+import { ErrorValidator } from "utils/errorHandling";
 
 export type FetchResponse =
 	| { type: "LOADING" }

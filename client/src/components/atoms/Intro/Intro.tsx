@@ -1,11 +1,10 @@
 import React, { memo } from 'react';
-import { IntroProps } from './Intro.types'
-import me from '../../../assets/ja.png';
-import brainhub from '../../../assets/brainhub.svg';
+import me from 'assets/ja.png';
+import brainhub from 'assets/brainhub.svg';
+import { XIcon } from 'components/atoms/icons/XIcon';
 import * as S from './Intro.styles'
-import { XIcon } from '../icons/XIcon';
 
-export const Intro: React.FC<IntroProps> = memo(() => {
+export const Intro: React.FC = memo(() => {
   return <S.Wrapper>
     <S.Link href='https://github.com/DaveTheWebDev' target='_blank'>
       <S.Image src={me} alt="Me" />

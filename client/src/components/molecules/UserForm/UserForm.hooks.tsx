@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
-import { userFormConfig } from './UserForm.config';
+import { useEffect } from 'react'
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import { useUserEventForm } from '../../context/UserEventFormCtx';
-import { LocalStorage } from '../../../services/LocalStorage';
-import { userApi } from '../../../api/UserApi/UserApi';
-import { useFetch } from '../../../hooks/useFetch';
-import { UserBodyDto } from '../../../api/UserApi/UserApi.dto';
+import { useUserEventForm } from 'components/context/UserEventFormCtx';
+import { LocalStorage } from 'services/LocalStorage';
+import { userApi } from 'api/UserApi/UserApi';
+import { useFetch } from 'hooks/useFetch';
+import { UserBodyDto } from 'api/UserApi/UserApi.dto';
+import { userFormConfig } from './UserForm.config';
 
 export const useUserForm = () => {
   const { handleSubmit, setError, control, formState: { errors } } = useForm(userFormConfig);
   const { setAddEventState } = useUserEventForm()
   const { fetchStatus, initFetch } = useFetch()
 
-  console.log(fetchStatus)
   const onSubmit: SubmitHandler<FieldValues> = async (user) => {
     const response = await initFetch(() => userApi.create(user as UserBodyDto))
     if (!response) return

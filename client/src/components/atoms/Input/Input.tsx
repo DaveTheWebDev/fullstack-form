@@ -1,8 +1,8 @@
 import React from 'react';
-import { InputProps } from './Input.types'
+import { Controller } from "react-hook-form";
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Controller } from "react-hook-form";
+import { InputProps } from './Input.types'
 import { getError, validateDate } from './Input.utils';
 
 const minDate = new Date();

@@ -1,5 +1,4 @@
-import { UserError } from "./../utils/errorHandling.types";
-import { ErrorValidator } from "./../utils/errorHandling";
+import { ErrorValidator } from "utils/errorHandling";
 export interface IFetchResponse<T> {
 	status: {
 		code: number;
