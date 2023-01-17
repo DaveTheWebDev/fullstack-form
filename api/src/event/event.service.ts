@@ -14,7 +14,7 @@ export class EventService {
   async addEvent(eventBody: EventDto): Promise<Event> {
     const date = new Date(eventBody.eventDate);
     const response = await this.prisma.event.create({
-      data: { ...eventBody, date },
+      data: { userEmail: eventBody.userEmail, date },
     });
     return response;
   }

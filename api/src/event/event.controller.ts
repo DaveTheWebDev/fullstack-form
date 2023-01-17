@@ -7,12 +7,12 @@ export class EventController {
   constructor(private readonly eventService: EventService) {}
 
   @Get('all/:email')
-  getEvents(@Param('email') email: string) {
+  async getEvents(@Param('email') email: string) {
     return this.eventService.getEvents(email);
   }
 
   @Post('add')
-  addEvent(@Body() body: EventDto) {
-    return this.eventService.addEvent(body);
+  async addEvent(@Body() body: EventDto) {
+    return await this.eventService.addEvent(body);
   }
 }

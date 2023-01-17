@@ -9,16 +9,16 @@ import {
 
 export class createUserDto {
   @IsString()
+  @Transform(({ value }: TransformFnParams) => value?.trim())
   @IsNotEmpty()
   @MinLength(1)
   @MaxLength(32)
-  @Transform(({ value }: TransformFnParams) => value?.trim())
   name: string;
   @IsString()
+  @Transform(({ value }: TransformFnParams) => value?.trim())
   @IsNotEmpty()
   @MinLength(1)
   @MaxLength(32)
-  @Transform(({ value }: TransformFnParams) => value?.trim())
   surname: string;
   @IsEmail()
   @IsNotEmpty()

@@ -1,16 +1,18 @@
+import { Transform } from 'class-transformer';
 import {
   MinLength,
   MaxLength,
-  IsDateString,
   IsEmail,
   IsNotEmpty,
   MinDate,
   MaxDate,
+  IsDate,
 } from 'class-validator';
 
 const today = new Date();
 const year = today.getFullYear();
 const month = today.getMonth();
+const day = today.getDate();
 
 export class EventDto {
   @IsEmail()
@@ -19,8 +21,9 @@ export class EventDto {
   @MaxLength(32)
   userEmail: string;
   @IsNotEmpty()
-  @IsDateString()
-  @MinDate(new Date())
-  @MaxDate(new Date(year + 10, month))
+  @Transform(({ value }) => new Date(value))
+  @IsDate()
+  @MinDate(new Date(year, month, day))
+  @MaxDate(new Date(year + 10, month, day))
   eventDate: string;
 }
