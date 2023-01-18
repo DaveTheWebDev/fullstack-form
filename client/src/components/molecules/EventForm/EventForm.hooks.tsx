@@ -43,6 +43,7 @@ export const useEventForm = () => {
 
   useEffect(() => {
     getEvents()
+    // eslint-disable-next-line
   }, [])
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { UserEventFormProvider } from 'components/context/UserEventFormCtx';
 import { IUserEventForm, UserEventFormState } from 'components/context/UserEventFormCtx.types';
 import { EventForm } from 'components/molecules/EventForm/EventForm';
@@ -38,6 +38,9 @@ describe('EventForm', () => {
     monthFormatted = month
     todayFormatted = date
   })
+  afterEach(async () => {
+    jest.clearAllMocks();
+  });
 
   describe('should display date input', () => {
     it('for a first render with today date', async () => {

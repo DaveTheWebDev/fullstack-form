@@ -21,6 +21,9 @@ describe('UserForm', () => {
       value: { stateType: 'USER_CREATE' as UserEventFormState },
     }
   })
+  afterEach(async () => {
+    jest.clearAllMocks();
+  });
 
   describe('should display name input', () => {
     it('for a first render', async () => {
