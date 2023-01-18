@@ -15,26 +15,26 @@
 
 ### Setup back-end
 
-[] open terminal  
-[] navigate to api folder `cd api`  
-[] run script `npm start`
+[ ] open terminal  
+[ ] navigate to api folder `cd api`  
+[ ] run script `npm start`
 
 ### Setup front-end
 
-[] open second terminal  
-[] navigate to client folder `cd client`  
-[] run script `npm start`
+[ ] open second terminal  
+[ ] navigate to client folder `cd client`  
+[ ] run script `npm start`
 
 ## How to run the tests?
 
 ### Run back-end tests
 
-[] open terminal  
-[] navigate to api folder `cd api`  
-[] run script `npm test`
+[ ] open terminal  
+[ ] navigate to api folder `cd api`  
+[ ] run script `npm test`
 
 ### Run front-end tests
 
-[] open terminal  
-[] navigate to client folder `cd client`  
-[] run script `npm test`
+[ ] open terminal  
+[ ] navigate to client folder `cd client`  
+[ ] run script `npm test`
