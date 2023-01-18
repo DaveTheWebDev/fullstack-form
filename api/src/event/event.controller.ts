@@ -8,11 +8,11 @@ export class EventController {
 
   @Get('all/:email')
   async getEvents(@Param('email') email: string) {
-    return this.eventService.getEvents(email);
+    return this.eventService.getAll(email);
   }
 
   @Post('add')
   async addEvent(@Body() body: EventDto) {
-    return await this.eventService.addEvent(body);
+    return await this.eventService.create(body);
   }
 }

@@ -4,29 +4,29 @@ import {
   NotAcceptableException,
   NotFoundException,
 } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
 
-@Injectable()
-export class UserService {
-  constructor(private readonly prisma: PrismaService) {}
+export interface IUserService {
+  get(email: string): Promise<User>;
+  create(createUserBody: createUserDto): Promise<User>;
+}
 
-  async getUser(email: string): Promise<User> {
-    const user = await this.prisma.user.findUnique({
-      where: { email },
-    });
+@Injectable()
+export class UserService implements IUserService {
+  constructor(private readonly userRepository: IUserService) {}
+
+  async get(email: string): Promise<User> {
+    const user = await this.userRepository.get(email);
     if (!user)
       throw new NotFoundException('User with given email does not exist');
     return user;
   }
 
-  async createUser(createUserBody: createUserDto) {
-    const user = await this.prisma.user.findUnique({
-      where: { email: createUserBody.email },
-    });
+  async create(createUserBody: createUserDto) {
+    const user = await this.userRepository.get(createUserBody.email);
     if (user) {
       throw new NotAcceptableException('User with given email already exists');
     }
-    return await this.prisma.user.create({ data: createUserBody });
+    return await this.userRepository.create(createUserBody);
   }
 }
