@@ -1,12 +1,12 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { UserForm } from 'components/molecules/UserForm/UserForm'
 import { UserEventFormProvider } from 'components/context/UserEventFormCtx';
 import { IUserEventForm, UserEventFormState } from 'components/context/UserEventFormCtx.types';
 import { SCHEMA_DICTIONARY } from 'components/molecules/UserForm/UserForm.config';
 import { LocalStorage } from 'services/LocalStorage'
 import { userApi } from 'api/UserApi/UserApi';
-import { user } from './UserForm.mock';
+import { user } from 'mocks/UserForm.mock';
 
 const customRender = (ui: React.ReactNode, providerProps: { value: Partial<IUserEventForm> }) => {
   return render(

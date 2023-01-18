@@ -38,8 +38,7 @@ export const useEventForm = () => {
     const email = LocalStorage.get('email')
     if (!email) return;
     const events = await initFetch(() => eventApi.getAll(email))
-    if (events)
-      setEvents(events)
+    if (events) setEvents(events)
   }
 
   useEffect(() => {
